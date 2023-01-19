@@ -48,7 +48,7 @@ function operator(num1, num2, operator) {
     }
 }
 
-console.log(operator(10, 7, '+'));
-console.log(operator(10, 7, '-'));
-console.log(operator(10, 7, '*'));
-console.log(operator(12, 6, '/'));
+//console.log(operator(10, 7, '+'));
+//console.log(operator(10, 7, '-'));
+//console.log(operator(10, 7, '*'));
+//console.log(operator(12, 6, '/'));

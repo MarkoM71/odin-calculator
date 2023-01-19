@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.calculator {
+    margin-top: 50px;
+    height: 550px;
+    width: 450px;
+    background-color: rgb(219, 211, 211);
+    border-style: solid;
+    border-color: black;
+    border-radius: 20px;
+}
+
+.screen {
+    background-color: whitesmoke;
+    height: 120px;
+    border-radius: 20px;
+}
