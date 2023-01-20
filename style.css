@@ -6,7 +6,7 @@
 
 .calculator {
     margin-top: 50px;
-    height: 550px;
+    height: 580px;
     width: 450px;
     background-color: rgb(219, 211, 211);
     border-style: solid;
@@ -18,4 +18,36 @@
     background-color: whitesmoke;
     height: 120px;
     border-radius: 20px;
+    font-size: 30px;
+    text-align: center;
+}
+
+.row, .row2 {
+    height: 86px;
+    border-color: black;
+    border-style: solid;
+}
+
+.row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.row2 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+button {
+    width: 100px;
+    height: 80px;
+    border-radius: 7px;
+    font-size: 30px;
+}
+
+#zero {
+    width: 211px;
+    height: 80px;
 }
