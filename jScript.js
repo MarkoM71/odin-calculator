@@ -1,3 +1,23 @@
+const buttonChoices = document.querySelectorAll('button');
+const buttonChoiceDisplay = document.getElementById('text-screen')
+const buttonSelected = [];
+let buttonSelectedText = "";
+
+
+buttonChoices.forEach(buttonChoice => buttonChoice.addEventListener('click', (e) => {
+    
+    buttonSelected.push(e.target.id);
+    buttonSelectedText = buttonSelected.toString(" ");
+    buttonChoiceDisplay.innerHTML = buttonSelectedText;
+}))
+
+
+
+
+
+
+
+
 function add(num1, num2) {
     let sum = num1 + num2;
     return sum;

@@ -18,9 +18,15 @@
     background-color: whitesmoke;
     height: 120px;
     border-radius: 20px;
-    font-size: 30px;
-    text-align: center;
+    font-size: 70px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
+
+/*.text-screen {
+    text-align: end;
+}*/
 
 .row, .row2 {
     height: 86px;
@@ -47,7 +53,7 @@ button {
     font-size: 30px;
 }
 
-#zero {
+.zero {
     width: 211px;
     height: 80px;
 }
