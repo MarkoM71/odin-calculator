@@ -8,42 +8,69 @@
     margin-top: 50px;
     height: 580px;
     width: 450px;
-    background-color: rgb(219, 211, 211);
+    background-color: rgb(129, 121, 121);
     border-style: solid;
     border-color: black;
     border-radius: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 .screen {
-    background-color: whitesmoke;
-    height: 120px;
-    border-radius: 20px;
-    font-size: 70px;
+    background-color: rgb(203, 191, 191);
+    height: 115px;  
+    border-radius: 20px 20px 20px 20px;
+    font-size: 45px;
     display: flex;
-    justify-content: flex-end;
-    align-items: center;
+    flex-direction: column;
+    margin: 9px   
 }
 
-/*.text-screen {
-    text-align: end;
-}*/
+.previousValue {
+    display: flex;
+    justify-content: flex-end;
+    height: 50px;
+    margin: 5px;
+}
 
-.row, .row2 {
+.currentValue {
+    display: flex;
+    justify-content: flex-end;
+    height: 50px;
+    margin: 5px;
+}
+
+.row, .row2 .row1 {
     height: 86px;
-    border-color: black;
-    border-style: solid;
 }
 
 .row {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    margin-top: 4px;
+}
+
+.row1 {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 6px;
+    margin-top: 5px
 }
 
 .row2 {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    margin-top: 4px;
+}
+
+.row5 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 4px;
 }
 
 button {
@@ -51,9 +78,9 @@ button {
     height: 80px;
     border-radius: 7px;
     font-size: 30px;
+    background-color: rgb(203, 191, 191);
 }
 
-.zero {
-    width: 211px;
-    height: 80px;
+button:hover {
+    background-color: rgb(228, 190, 120);
 }

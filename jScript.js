@@ -1,74 +1,128 @@
-const buttonChoices = document.querySelectorAll('button');
-const buttonChoiceDisplay = document.getElementById('text-screen')
-const buttonSelected = [];
-let buttonSelectedText = "";
+let currentValue = "";
+let previousValue = "";
+let operator = "";
+
+const previousDisplayValue = document.querySelector(".previousValue");
+const currentDisplayValue = document.querySelector(".currentValue");
+
+const numberButtons = document.querySelectorAll(".number");
+const operators = document.querySelectorAll(".operator");
+const equal = document.querySelector(".equal");
+const decimal = document.querySelector(".decimal");
+const clear = document.querySelector(".clear");
 
 
-buttonChoices.forEach(buttonChoice => buttonChoice.addEventListener('click', (e) => {
-    
-    buttonSelected.push(e.target.id);
-    buttonSelectedText = buttonSelected.toString(" ");
-    buttonChoiceDisplay.innerHTML = buttonSelectedText;
-}))
+equal.addEventListener("click", () => {
+  if (currentValue != "" && previousValue != "") {
+    calculate();
+  }
+});
 
+decimal.addEventListener("click", () => {
+  addDecimal();
+});
 
+clear.addEventListener("click", clearCalculator);
 
+numberButtons.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    handleNumber(e.target.textContent);
+  });
+});
 
-
-
-
-
-function add(num1, num2) {
-    let sum = num1 + num2;
-    return sum;
+function handleNumber(number) {
+  if (previousValue !== "" && currentValue !== "" && operator === "") {
+    previousValue = "";
+    currentDisplayValue.textContent = currentValue;
+  }
+  if (currentValue.length <= 11) {
+    currentValue += number;
+    currentDisplayValue.textContent = currentValue;
+  }
 }
 
-//console.log(add(7, 10));
+operators.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    handleOperator(e.target.textContent);
+  });
+});
 
-
-function subtract(num1, num2) {
-    let difference = num1 - num2;
-    return difference;
+function handleOperator(op) {
+  if (previousValue === "") {
+    previousValue = currentValue;
+    operatorCheck(op);
+  }
+  else if (currentValue === "") {
+    operatorCheck(op);
+  }
+  else {
+    calculate();
+    operator = op;
+    currentDisplayValue.textContent = "0";
+    previousDisplayValue.textContent = previousValue + " " + operator;
+  }
 }
 
-//console.log(subtract(10, 7));
-
-
-function multiply(num1, num2) {
-    let multiplication = num1 * num2;
-    return multiplication;
+function operatorCheck(text) {
+  operator = text;
+  previousDisplayValue.textContent = previousValue + " " + operator;
+  currentDisplayValue.textContent = "0";
+  currentValue = "";
 }
 
-//console.log((multiply(10, 7)));
+function calculate() {
+  previousValue = Number(previousValue);
+  currentValue = Number(currentValue);
 
-
-function divide(num1, num2) {
-    let division = num1 / num2;
-    return division;
-}
-
-//console.log((divide(12, 6)));
-
-//Create Operate Function
-function operator(num1, num2, operator) {
-    if (operator === '+') {
-        return add(num1, num2);
+  if (operator === "+") {
+    previousValue += currentValue;
+  }
+  else if (operator === "-") {
+    previousValue -= currentValue;
+  }
+  else if (operator === "x") {
+    previousValue *= currentValue;
+  }
+  else if (operator === "/") {
+    if (currentValue <= 0) {
+      previousValue = "Error";
+      displayResults();
+      return;
     }
-
-    else if (operator === '-') {
-        return subtract(num1, num2);
-    }
-
-    else if (operator === '*') {
-        return multiply(num1, num2);
-    }
-
-    else if (operator === '/') {
-        return divide(num1, num2);
-    }
+    previousValue /= currentValue;
+  }
+  previousValue = roundNumber(previousValue);
+  previousValue = previousValue.toString();
+  displayResults();
 }
 
-//console.log(operator(10, 7, '+'));
-//console.log(operator(10, 7, '-'));
-//console.log(operator(10, 7, '*'));
-//console.log(operator(12, 6, '/'));
+function roundNumber(num) {
+  return Math.round(num * 10000000) / 10000000;
+}
+
+function displayResults() {
+  if (previousValue.length <= 11) {
+    currentDisplayValue.textContent = previousValue;
+  }
+  else {
+    currentDisplayValue.textContent = previousValue.slice(0, 11) + "...";
+  }
+  previousDisplayValue.textContent = "";
+  operator = "";
+  currentValue = "";
+}
+
+function clearCalculator() {
+  currentValue = "";
+  previousValue = "";
+  operator = "";
+  currentDisplayValue.textContent = "0";
+  previousDisplayValue.textContent = "";
+}
+
+function addDecimal() {
+  if (!currentValue.includes(".")) {
+    currentValue += ".";
+    currentDisplayValue.textContent = currentValue;
+  }
+}
